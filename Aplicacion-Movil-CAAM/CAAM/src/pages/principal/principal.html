@@ -1,0 +1,54 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Principal</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+      <ion-card>
+              <ion-chip color="mayor2">
+                  <ion-avatar slot="start">
+                      <img ion-img src="../img/foto2.jpg" border-radius class="img-3">
+                  </ion-avatar>
+                  <ion-label *ngFor="let usuario of datos">
+                   {{ usuario.nombretotal }}
+                  </ion-label>
+                </ion-chip>
+          <ion-card-header>
+            <ion-card-title>SUS TALLERES</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+                  <div class="centrado">
+                      <ion-label *ngFor="let taller of talleres">
+                      <button ion-button color="mayor3" block (click)="metodotraigo(taller.nombrenivel)">
+                    {{taller.idNivel}} - {{taller.nombrenivel}}
+                </button>
+              </ion-label>
+                  </div>
+          </ion-card-content>
+          <ion-card-header>
+              <ion-card-title>COMENTARIOS</ion-card-title>
+            </ion-card-header>
+          <ion-card-content>
+          <ion-label *ngFor="let comentario of comentarios">
+              Taller : {{ comentario.nombreNivel }}
+              <br>
+              {{ comentario.nombreTarea}} 
+             <br>
+               Comentado por : 
+               {{ comentario.emisor }}
+               <br>
+               Comentario :
+               <br>
+               {{ comentario.comentario }}
+               <button ion-button color="primary" block (click)="metodoComentarioRevisado(comentario.idComentario, comentario.comentario, comentario.estado)">
+                   Revisado
+               </button>
+           </ion-label>
+          </ion-card-content>
+    
+        </ion-card>
+            <button ion-button block color="mayor2" (click)="exitApp()">CERRAR SESION
+              </button>
+</ion-content>

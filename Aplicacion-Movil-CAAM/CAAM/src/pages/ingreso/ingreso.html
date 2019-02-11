@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Ingreso</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <div class="centrado">  
+        <img class="img-1" ion-img src="../img/logotipocaam.jpg">
+<ion-card>
+    <ion-card-header>
+      <ion-card-title>INICIE SESION</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+        <ion-input placeholder="USUARIO CAAM" type="text" required [(ngModel)]="model.email"></ion-input>
+        <ion-input placeholder="CONTRASEÑA" type="password" required [(ngModel)]="model.password"></ion-input>
+    <button ion-button color="mayor1" block (click)="metodoLogin()">ENTRAR</button> 
+    </ion-card-content>
+  </ion-card>
+</div>
+</ion-content>

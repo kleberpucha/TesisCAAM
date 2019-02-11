@@ -1,0 +1,23 @@
+page-principal {
+    .img-3 {
+        border: 1px solid rgb(95, 78, 22);
+        border-radius: 50px;
+        padding: 1px;
+        width: 200px;
+      }
+      .centrado{
+        text-align: center;
+      }
+      h1 {
+        font-size: 15px;
+      }
+      h2 {
+        font-size: 30px;
+      }
+      p {
+        font-size: 14px;
+      }
+      .my-custom-menu {
+        --width: 500px;
+      }
+}

@@ -1,0 +1,99 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>PRACTICA A</ion-title>
+      </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div class="centrado">  
+        <ion-card>
+            <ion-card-header>
+              <ion-card-title></ion-card-title>
+              CONSTRUCCION DE UN CIRCUITO EN SERIE
+            </ion-card-header>
+            <ion-card-content>
+                Siga los siguientes pasos
+            </ion-card-content>   
+        </ion-card>
+      </div>
+
+      <div class="centrado">  
+        <ion-card>
+            <ion-card-header>
+              <ion-card-title>PASO 1</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                Sacar del kit de aprendizaje los siguientes materiales
+                <br>
+            1 FUENTE
+            <img class="img-1" ion-img src="../img/img_ei/pilas.jpg">
+            1 LED
+            <img class="img-1" ion-img src="../img/img_ei/led.jpg">
+            1 PULSANTE
+            <img class="img-1" ion-img src="../img/img_ei/pulsante.jpg">
+            3 CABLES
+            <img class="img-1" ion-img src="../img/img_ei/cable.jpg">
+        </ion-card-content>  
+        </ion-card>
+      </div>
+      <div class="centrado">  
+        <ion-card>
+            <ion-card-header>
+              <ion-card-title>PASO 2</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+            Conecte el cable positivo de la bateria a uno de los extremos del pulsante
+        </ion-card-content>  
+        </ion-card>
+      </div>
+      <div class="centrado">  
+        <ion-card>
+            <ion-card-header>
+              <ion-card-title>PASO 3</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+            Conecte el cable de otro extremo del pulsante a un extremo del led
+        </ion-card-content>  
+        </ion-card>
+      </div>
+      <div class="centrado">  
+        <ion-card>
+            <ion-card-header>
+              <ion-card-title>PASO 4</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+            Conecte el cable de otro extremo del led al extremo sobrante de la bateria
+        </ion-card-content>  
+        </ion-card>
+      </div>
+      <div class="centrado">  
+            <ion-card>
+                <ion-card-header>
+                  <ion-card-title>PASO 5</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                Presione el pulsante en dos ocaciones
+            </ion-card-content>  
+            </ion-card>
+          </div>
+        <ion-card>
+            RESPONDA LAS SIGIENTES OBCIONES EN FUNCION DE LO QUE PERCIBIO
+            <ion-card-content>
+                <ion-checkbox color="secondary"></ion-checkbox>El led no enciende<br>
+                <ion-checkbox color="secondary"></ion-checkbox>No emite ningun sonido<br>
+                <ion-checkbox [(ngModel)]="respuesta" color="secondary"></ion-checkbox>El led se enciende y se apaga<br>
+                <ion-checkbox color="secondary"></ion-checkbox>El led se mantiene encendido
+            </ion-card-content>
+        </ion-card>
+        <ion-card>
+            <ion-card-content>
+                <ion-item>
+                    <ion-textarea [(ngModel)]="observacion" placeholder="Escriba su Observacion o duda"></ion-textarea>
+                  </ion-item>
+            </ion-card-content>
+            <button ion-button block (click)="metodoRespuesta()">Realizar</button>
+        </ion-card>
+</ion-content>

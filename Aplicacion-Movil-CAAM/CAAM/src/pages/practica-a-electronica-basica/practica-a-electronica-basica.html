@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>PRACTICA A</ion-title>
+      </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div class="centrado">  
+    <ion-card>
+        <ion-card-header>
+          <ion-card-title></ion-card-title>
+          Elija una Respuesta
+        </ion-card-header>
+        <ion-card-content>
+            Los simbolos siguientes representan.....
+        </ion-card-content>   
+    </ion-card>
+    <img class="img-1" ion-img src="../img/img_eb/resistencias.jpg">
+  </div>
+    <ion-card>
+        <ion-card-content>
+            <ion-checkbox color="secondary"></ion-checkbox>resistencia y potenciometro<br>
+            <ion-checkbox [(ngModel)]="respuesta" color="secondary"></ion-checkbox>dos resistencias<br>
+            <ion-checkbox color="secondary"></ion-checkbox>dos potenciometros<br>
+            <ion-checkbox color="secondary"></ion-checkbox>voltimetro y amperimetro
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-content>
+            <ion-item>
+                <ion-textarea [(ngModel)]="observacion" placeholder="Escriba su Observacion o duda"></ion-textarea>
+              </ion-item>
+        </ion-card-content>
+        <button ion-button block (click)="metodoRespuesta()">Realizar</button>
+    </ion-card>
+</ion-content>

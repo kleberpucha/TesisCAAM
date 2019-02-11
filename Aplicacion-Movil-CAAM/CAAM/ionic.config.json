@@ -1,0 +1,7 @@
+{
+  "name": "CAMM",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

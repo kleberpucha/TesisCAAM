@@ -1,0 +1,32 @@
+<ion-menu [content]="content">
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ELECTRONICA BASICA</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+    <ion-chip color="mayor2">
+        <ion-avatar slot="start">
+            <img ion-img src="../img/foto2.jpg" border-radius class="img-3">
+        </ion-avatar>
+        <ion-label *ngFor="let usu of usuario">
+         {{ usu.nombre }}
+        </ion-label>
+      </ion-chip>
+      <button ion-button block color="mayor3" *ngFor="let tall of taller">
+         {{ tall.nombrenivel }}
+      </button>
+  <ion-list>
+    <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+      {{p.title}}
+    </button>
+  </ion-list>
+  <button ion-button block color="mayor2" (click)="exitApp()">
+    Pagina Principal
+  </button>
+  </ion-card>
+</ion-content>
+</ion-menu>
+<ion-nav [root]="rootPage" #content swipeBackEnabled="False"></ion-nav>
