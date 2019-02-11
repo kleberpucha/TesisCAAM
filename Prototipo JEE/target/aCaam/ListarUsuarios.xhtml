@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<style type="text/css">
+.value {
+	font-weight: bold;
+}
+</style>
+	<style type="text/css">
+.ui-paginator a {
+	margin-right: 5px;
+}
+</style>
+
+</h:head>
+
+<h:head>
+	<title></title>
+	<link rel="shortcut icon" href="resources/assets/images/gt_favicon.png"></link>
+
+	<link rel="stylesheet" media="screen"
+		href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700"></link>
+	<link rel="stylesheet" href="resources/assets/css/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="resources/assets/css/font-awesome.min.css"></link>
+
+	<!-- Custom styles for our template -->
+	<link rel="stylesheet" href="resources/assets/css/bootstrap-theme.css"
+		media="screen"></link>
+	<link rel="stylesheet" href="resources/assets/css/main.css"></link>
+
+	<style type="text/css">
+.ui-datalist .ui-datalist-content {
+	border: 0 none
+}
+
+.ui-datalist ul {
+	padding: 0px 10px 0 20px;
+	margin: 5px 0;
+}
+
+.value {
+	font-weight: bold;
+}
+
+.ui-autocomplete-itemtip {
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+</style>
+</h:head>
+<body>
+	<h:form>
+		<p:dock position="bottom">
+			<p:menuitem value="PRINCIPAL" icon="/resources/demo/images/home.png"
+				url="Pasiente.xhtml" />
+		</p:dock>
+	</h:form>
+<h:head>
+		<div class="navbar navbar-inverse navbar-fixed-top headroom">
+			<div class="container">
+				<div class="navbar-header">
+					<!-- Button for smallest screens -->
+					<a class="navbar-brand" href="index.html"><img
+						src="resources/assets/images/logo.png"
+						alt="Progressus HTML5 template"></img></a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav pull-right">
+						<li><a href="index.html">PAGINA PRINCIPAL</a></li>
+						<li><a href=" ">MISION</a></li>
+						<li><a href=" ">VISION</a></li>
+						<li><a href="contact.html">CONTACTO</a></li>
+						<li><a class="btn" href="Loggin.xhtml">INGRESAR/SALIR</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</h:head>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+
+	<h:form id="usuarioseccion">
+		<div align="right">
+			<h:outputText value="#{personaBean.usuLoogin}" />
+		</div>
+	</h:form>
+	<h:form id="form">
+		<p:dataGrid var="car" value="#{personaBean.listaUsuarios}" columns="3"
+			layout="grid" rows="12" paginator="true" id="cars"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="6,12,16">
+
+			<f:facet name="header">
+            LISTA DE USUARIOS
+        </f:facet>
+
+			<p:panel header="#{car.nombre}" style="text-align:center">
+				<h:panelGrid columns="2" style="width:100%">
+					<h:outputLabel value="Nombre" style="font-weight:bold" />
+					<h:outputText value="#{car.nombre}" />
+					<h:outputLabel value="Apellido" style="font-weight:bold" />
+					<h:outputText value="#{car.apellido}" />
+					<h:outputLabel value="Email" style="font-weight:bold" />
+					<h:outputText value="#{car.email}" />
+					<h:outputLabel value="Cedula" style="font-weight:bold" />
+					<h:outputText value="#{car.cedula}" />
+					<h:outputLabel value="Telefono" style="font-weight:bold" />
+					<h:outputText value="#{car.telefono}" />
+					<h:outputLabel value="Fecha Nacimiento" style="font-weight:bold" />
+					<h:outputText value="#{car.fechaN}" />
+				</h:panelGrid>
+			</p:panel>
+			
+		</p:dataGrid>
+
+	</h:form>
+	<h:form id="reporte">
+
+		<h3 style="margin-top: 0">Basic</h3>
+		
+		<p:accordionPanel>
+			<p:tab title="Reportes">
+				<h:panelGrid columns="1" cellpadding="10">
+					<p:dataTable id="tbl" var="usuario"
+						value="#{personaBean.listaUsuarios}"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+						paginator="true" rows="10" style="margin-bottom:20px">
+
+						<f:facet name="{Exporters}">
+							<div style="float: right; padding-top: 5px;">
+								<h:commandLink>
+									<p:graphicImage name="/demo/images/csv.png" width="24" />
+									<p:dataExporter type="csv" target="tbl" fileName="cars" />
+								</h:commandLink>
+
+							</div>
+						</f:facet>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Nombres" />
+							</f:facet>
+							<h:outputText value="#{usuario.apellido} #{usuario.nombre}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Telefono" />
+							</f:facet>
+							<h:outputText value="#{usuario.telefono}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Fecha de Nacimiento" />
+							</f:facet>
+							<h:outputText value="#{usuario.fechaN}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Cedula" />
+							</f:facet>
+							<h:outputText value="#{usuario.cedula}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Email" />
+							</f:facet>
+							<h:outputText value="#{usuario.email}" />
+						</p:column>
+					</p:dataTable>
+				</h:panelGrid>
+			</p:tab>
+		</p:accordionPanel>
+
+
+	</h:form>
+
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<style type="text/css">
+.value {
+	font-weight: bold;
+}
+
+.ui-carousel {
+	margin-bottom: 20px;
+}
+</style>
+</h:head>
+<h:head>
+	<title></title>
+	<link rel="shortcut icon" href="resources/assets/images/gt_favicon.png"></link>
+
+	<link rel="stylesheet" media="screen"
+		href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700"></link>
+	<link rel="stylesheet" href="resources/assets/css/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="resources/assets/css/font-awesome.min.css"></link>
+
+	<!-- Custom styles for our template -->
+	<link rel="stylesheet" href="resources/assets/css/bootstrap-theme.css"
+		media="screen"></link>
+	<link rel="stylesheet" href="resources/assets/css/main.css"></link>
+
+	<style type="text/css">
+.ui-datalist .ui-datalist-content {
+	border: 0 none
+}
+
+.ui-datalist ul {
+	padding: 0px 10px 0 20px;
+	margin: 5px 0;
+}
+
+.value {
+	font-weight: bold;
+}
+
+.ui-autocomplete-itemtip {
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+</style>
+</h:head>
+<body>
+	<h:form>
+		<p:dock position="bottom">
+			<p:menuitem value="PRINCIPAL" icon="/resources/demo/images/home.png"
+				url="Pasiente.xhtml" />
+		</p:dock>
+	</h:form>
+<h:head>
+		<div class="navbar navbar-inverse navbar-fixed-top headroom">
+			<div class="container">
+				<div class="navbar-header">
+					<!-- Button for smallest screens -->
+					<a class="navbar-brand" href="index.html"><img
+						src="resources/assets/images/logo.png"
+						alt="Progressus HTML5 template"></img></a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav pull-right">
+						<li><a href="index.html">PAGINA PRINCIPAL</a></li>
+						<li><a href=" ">MISION</a></li>
+						<li><a href=" ">VISION</a></li>
+						<li><a href="contact.html">CONTACTO</a></li>
+						<li><a class="btn" href="Loggin.xhtml">INGRESAR/SALIR</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</h:head>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+
+
+	<h:form id="usuarioseccion">
+		<div align="right">
+			<h:outputText value="#{personaBean.usuLoogin}" />
+		</div>
+	</h:form>
+	<h:form id="form">
+
+
+
+		<p:carousel value="#{validarVentanaBean.objListaTotal2}"
+			headerText="Objeto de Apredisaje" var="listFin"
+			itemStyle="text-align:center" responsive="true">
+			<p:panelGrid columns="1" style="width:100%;margin:10px 0px"
+				columnClasses="label,value" layout="grid"
+				styleClass="ui-panelgrid-blank">
+				<f:facet name="header">
+				</f:facet>
+
+				<h:outputText value="Nombre:" />
+				<h:outputText value="#{listFin.persona.nombre}" />
+
+				<h:outputText value="Apellido" />
+				<h:outputText value="#{listFin.persona.apellido}" />
+
+				<h:outputText value="Nivel" />
+				<h:outputText value="#{listFin.nivel.nombre}" />
+
+
+				<h:outputText value="Nivel Tipo" />
+				<h:outputText value="#{listFin.nivel.tipo}" />
+
+				<h:outputText value="Tarea" />
+				<h:outputText value="#{listFin.tarea}" />
+
+				<h:outputText value="Resultado" />
+				<h:outputText value="#{listFin.resultado}" />
+
+				<h:outputText value="Observaciones" />
+				<h:outputText value="#{listFin.observacoiones}" />
+
+			</p:panelGrid>
+
+			<f:facet name="footer">
+
+			</f:facet>
+		</p:carousel>
+	</h:form>
+
+	<h:form>
+		<p:dataTable id="basicDT" var="car"
+			value="#{validarVentanaBean.objListaTotal2}">
+			<f:facet name="header">
+            Basic
+        </f:facet>
+			<p:column headerText="Id">
+				<h:outputText value="#{car.id}" />
+			</p:column>
+			<p:column headerText="Year">
+				<h:outputText value="#{car.observacoiones}" />
+			</p:column>
+			<p:column headerText="Brand">
+				<h:outputText value="#{car.resultado}" />
+			</p:column>
+			<p:column headerText="Color">
+				<h:outputText value="#{car.tarea}" />
+			</p:column>
+			<p:column style="width:32px;text-align: center">
+				<p:commandButton update=":form:carDetail"
+					oncomplete="PF('carDialog').show()" icon="pi pi-search"
+					title="View">
+					<f:setPropertyActionListener value="#{car}"
+						target="#{validarVentanaBean.objListaTotal2}" />
+				</p:commandButton>
+			</p:column>
+		</p:dataTable>
+
+		<p:dialog header="Car Info" widgetVar="carDialog" modal="true"
+			showEffect="fade" hideEffect="fade" resizable="false">
+			<p:outputPanel id="carDetail" style="text-align:center;">
+				<p:panelGrid columns="2"
+					rendered="#{not empty dtSelectionView.selectedCar}"
+					columnClasses="label,value">
+
+					<h:outputText value="Id:" />
+					<h:outputText
+						value="#{validarVentanaBean.objListaTotal2.get(0).id}" />
+
+				</p:panelGrid>
+			</p:outputPanel>
+		</p:dialog>
+
+	</h:form>
+
+
+
+
+</body>
+</html>

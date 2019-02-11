@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<style type="text/css">
+.value {
+	font-weight: bold;
+}
+
+.ui-carousel {
+	margin-bottom: 20px;
+}
+</style>
+</h:head>
+<h:head>
+	<title></title>
+	<link rel="shortcut icon" href="resources/assets/images/gt_favicon.png"></link>
+
+	<link rel="stylesheet" media="screen"
+		href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700"></link>
+	<link rel="stylesheet" href="resources/assets/css/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="resources/assets/css/font-awesome.min.css"></link>
+
+	<!-- Custom styles for our template -->
+	<link rel="stylesheet" href="resources/assets/css/bootstrap-theme.css"
+		media="screen"></link>
+	<link rel="stylesheet" href="resources/assets/css/main.css"></link>
+
+	<style type="text/css">
+.ui-datalist .ui-datalist-content {
+	border: 0 none
+}
+
+.ui-datalist ul {
+	padding: 0px 10px 0 20px;
+	margin: 5px 0;
+}
+
+.value {
+	font-weight: bold;
+}
+
+.ui-autocomplete-itemtip {
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+</style>
+</h:head>
+<body>
+	<p:dock position="bottom">
+		<p:menuitem value="PRINCIPAL" icon="/resources/demo/images/home.png"
+			url="Pasiente.xhtml" />
+	</p:dock>
+
+	<h:head>
+		<div class="navbar navbar-inverse navbar-fixed-top headroom">
+			<div class="container">
+				<div class="navbar-header">
+					<!-- Button for smallest screens -->
+					<a class="navbar-brand" href="index.html"><img
+						src="resources/assets/images/logo.png"
+						alt="Progressus HTML5 template"></img></a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav pull-right">
+						<li><a href="index.html">PAGINA PRINCIPAL</a></li>
+						<li><a href=" ">MISION</a></li>
+						<li><a href=" ">VISION</a></li>
+						<li><a href="contact.html">CONTACTO</a></li>
+						<li><a class="btn" href="Loggin.xhtml">INGRESAR/SALIR</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</h:head>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<h:form id="usuarioseccion">
+		<div align="right">
+			<h:outputText value="#{personaBean.usuLoogin}" />
+		</div>
+	</h:form>
+
+	<h:form id="mensajes">
+		<p:messages id="messages" showDetail="true" closable="true">
+			<p:autoUpdate />
+		</p:messages>
+	</h:form>
+
+
+
+	<h:form id="multi">
+		<h3>Comentarios</h3>
+		<p:accordionPanel multiple="true">
+			<p:tab title="Lista de Usuarios con Tareas">
+				<p:dataGrid var="car" value="#{validarVentanaBean.objListaTotal}"
+					columns="2" layout="grid" rows="1" paginator="true" id="cars"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="2,6,12,16">
+
+					<f:facet name="header">
+            LISTA DE TAREAS 
+        			</f:facet>
+
+					<p:panel header="#{car.persona.nombre}" style="text-align:center">
+						<h:panelGrid columns="2" style="width:100%">
+							<h:outputLabel value="Apellido: " style="font-weight:bold" />
+							<h:outputText value="#{car.persona.apellido}" />
+							<h:outputLabel value="Cedula:" style="font-weight:bold" />
+							<h:outputText value="#{car.persona.cedula}" />
+							<h:outputLabel value="Nivel" style="font-weight:bold" />
+							<h:outputText value="#{car.nivel.nombre}" />
+							<h:outputLabel value="Email" style="font-weight:bold" />
+							<h:outputText value="#{car.persona.email}" />
+							<h:outputLabel value="Tarea" style="font-weight:bold" />
+							<h:outputText value="#{car.tarea}" />
+							<h:outputLabel value="Fecha de taller" style="font-weight:bold" />
+							<h:outputText value="#{car.fechaTaller}" />
+							<h:outputLabel value="Observaciones" style="font-weight:bold" />
+							<h:outputText value="#{car.observacoiones}" />
+						</h:panelGrid>
+					</p:panel>
+				</p:dataGrid>
+			</p:tab>
+			<p:tab title="Agregar un comentario" id="idfinal">
+				<h:panelGrid columns="2" cellpadding="5" id="gridf">
+					<p:outputLabel value="Cedula: " for="acForce" />
+					<p:autoComplete id="acForce" forceSelection="true"
+						value="#{comentariosBean.cedula}"
+						completeMethod="#{comentariosBean.completeText()}" />
+					<p:outputLabel value="Nivel: " for="niv" />
+					<p:autoComplete id="niv" forceSelection="true"
+						value="#{comentariosBean.nivel}"
+						completeMethod="#{comentariosBean.completeTextNivel()}" />
+					<p:outputLabel value="Tarea " for="tar" />
+					<p:autoComplete id="tar" forceSelection="true"
+						value="#{comentariosBean.tarea}"
+						completeMethod="#{comentariosBean.completetaTarea()}" />
+
+					<h3>Escriba Comentario</h3>
+					<p:inputTextarea value="#{comentariosBean.comentario}" rows="5"
+						cols="30" counter="display" maxlength="125"
+						counterTemplate="{0} characters remaining." autoResize="false" />
+					<h:outputText id="display" />
+					<br />
+
+					<p:commandButton ajax="#{comentariosBean.insertar()}"
+						value="Enviar Comentario" icon="pi pi-check" update="multi"
+						process="@this" />
+					<!-- -->
+					<p:messages globalOnly="true" />
+				</h:panelGrid>
+			</p:tab>
+
+
+
+			<p:tab title="Comentarios sin leer">
+				<br />
+				<br />
+				<br />
+				<br />
+				<!-- Listar todoo Los nuevo comentarios -->
+
+				<h:commandButton value="Listar " action="#{comentariosBean.ListarNo()}">
+				</h:commandButton>
+				<h:panelGrid columns="2" cellpadding="10">
+					<p:dataTable id="tbl" var="temp"
+						value="#{comentariosBean.tempocomentarios}"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+						paginator="true" rows="10" style="margin-bottom:20px">
+
+						<f:facet name="{Exporters}">
+							<div style="float: right; padding-top: 5px;">
+								<h:commandLink>
+									<p:graphicImage name="/demo/images/csv.png" width="24" />
+									<p:dataExporter type="csv" target="tbl"	fileName="ListadodeComentarios" />
+								</h:commandLink>
+							</div>
+						</f:facet>
+						
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Codigo" />
+							</f:facet>
+							<h:outputText value="#{temp.idComentario}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Fecha" />
+							</f:facet>
+							<h:outputText value="#{temp.fecha}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Hora" />
+							</f:facet>
+							<h:outputText value="#{temp.hora}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Nivel " />
+							</f:facet>
+							<h:outputText value="#{temp.nombreNivel}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Tarea" />
+							</f:facet>
+							<h:outputText value="#{temp.nombreTarea}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Emisor " />
+							</f:facet>
+							<h:outputText value="#{temp.emisor}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Comentario" />
+							</f:facet>
+							<h:outputText value="#{temp.comentario}" />
+						</p:column>
+
+						<p:column>
+							<f:facet name="header">Acciones</f:facet>
+							<h:commandButton action="#{comentariosBean.updateComentario(temp.idComentario, temp.comentario, temp.idemisor, temp.idreceptor, temp.idobjetoApredizaje)}" value="Visto">
+							<p:ajax render="@form" execute="@form"/>
+							 </h:commandButton>					
+						</p:column>
+					</p:dataTable>
+				</h:panelGrid>
+			</p:tab>
+		</p:accordionPanel>
+	</h:form>
+</body>
+</html>

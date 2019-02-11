@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title></title>
+	<link rel="shortcut icon" href="resources/assets/images/gt_favicon.png"></link>
+
+	<link rel="stylesheet" media="screen"
+		href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700"></link>
+	<link rel="stylesheet" href="resources/assets/css/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="resources/assets/css/font-awesome.min.css"></link>
+
+	<!-- Custom styles for our template -->
+	<link rel="stylesheet" href="resources/assets/css/bootstrap-theme.css"
+		media="screen"></link>
+	<link rel="stylesheet" href="resources/assets/css/main.css"></link>
+
+	<style type="text/css">
+.ui-datalist .ui-datalist-content {
+	border: 0 none
+}
+
+.ui-datalist ul {
+	padding: 0px 10px 0 20px;
+	margin: 5px 0;
+}
+
+.value {
+	font-weight: bold;
+}
+
+.ui-autocomplete-itemtip {
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+</style>
+</h:head>
+
+<body>
+	<h:form>
+		<p:dock position="bottom">
+			<p:menuitem value="PRINCIPAL" icon="/resources/demo/images/home.png"
+				url="Pasiente.xhtml" />
+		</p:dock>
+	</h:form>
+<h:head>
+		<div class="navbar navbar-inverse navbar-fixed-top headroom">
+			<div class="container">
+				<div class="navbar-header">
+					<!-- Button for smallest screens -->
+					<a class="navbar-brand" href="index.html"><img
+						src="resources/assets/images/logo.png"
+						alt="Progressus HTML5 template"></img></a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav pull-right">
+						<li><a href="index.html">PAGINA PRINCIPAL</a></li>
+						<li><a href=" ">MISION</a></li>
+						<li><a href=" ">VISION</a></li>
+						<li><a href="contact.html">CONTACTO</a></li>
+						<li><a class="btn" href="Loggin.xhtml">INGRESAR/SALIR</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</h:head>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<h:form id="usuarioseccion">
+		<div align="right">
+			<h:outputText value="#{personaBean.usuLoogin}" />
+		</div>
+	</h:form>
+	<h:form>
+		<p:panelGrid columns="2" cellpadding="4">
+			<p:outputLabel value="Usuario" style="font-weight:bold" />
+			<p:inputText value="#{usuarioBeanInserar.newusuario.usuario}" />
+			<p:outputLabel value="Contraseña" style="font-weight:bold" />
+			<p:password id="feedback"
+				value="#{usuarioBeanInserar.newusuario.contrasenia}" feedback="true" />
+		</p:panelGrid>
+
+		<p:dataTable var="persona"
+			value="#{usuarioBeanInserar.newusuario.persona}"
+			styleClass="simpletablestyle">
+			<p:column>
+				<p:outputLabel value="Nombre:" style="font-weight:bold" />
+				<p:inputText id="nombreT" value="#{persona.nombre}" />
+				<h:message for="nombreT" />
+			</p:column>
+
+			<p:column>
+				<p:outputLabel value="Apellido: " style="font-weight:bold" />
+				<p:inputText id="apellidoT" value="#{persona.apellido}" />
+				<h:message for="apellidoT" />
+			</p:column>
+			<p:column>
+				<p:outputLabel value="Email:" style="font-weight:bold" />
+				<p:inputText id="emailT" value="#{persona.email}" />
+				<h:message for="emailT" />
+			</p:column>
+
+			<p:column>
+				<p:outputLabel value="Telefono" style="font-weight:bold" />
+				<p:inputText id="telefonoT" value="#{persona.telefono}" />
+				<h:message for="telefonoT" />
+			</p:column>
+
+			<p:column>
+				<p:outputLabel value="Cedula" style="font-weight:bold" />
+				<p:inputText id="cedulaT" value="#{persona.cedula}" />
+				<h:message for="cedulaT" />
+			</p:column>
+
+			<p:column>
+				<p:outputLabel value="Fecha Nacimiento" style="font-weight:bold" />
+				<p:calendar id="button" value="#{persona.fechaN}" showOn="button" />
+				<h:message for="button" />
+
+			</p:column>
+
+			<p:column>
+				<p:outputLabel value="Tipo" style="font-weight:bold" />
+				<p:selectOneListbox value="#{persona.tipo}">
+					<f:selectItem itemLabel="1 Terepista" itemValue="1" />
+					<f:selectItem itemLabel="2 Usuario" itemValue="2" />
+				</p:selectOneListbox>
+			</p:column>
+
+			<f:facet name="footer">
+			</f:facet>
+		</p:dataTable>
+		<center>
+			<p:commandButton ajax="#{usuarioBeanInserar.addUsuario()}"
+				action="#{usuarioBeanInserar.guardarF()}" value="Ingresar"
+				icon="pi pi-check" />
+		</center>
+		<h:messages globalOnly="true" />
+	</h:form>
+</body>
+</html>

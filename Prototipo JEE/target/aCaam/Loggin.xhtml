@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title></title>
+	<link rel="shortcut icon" href="resources/assets/images/gt_favicon.png"></link>
+
+	<link rel="stylesheet" media="screen"
+		href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700"></link>
+	<link rel="stylesheet" href="resources/assets/css/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="resources/assets/css/font-awesome.min.css"></link>
+
+	<!-- Custom styles for our template -->
+	<link rel="stylesheet" href="resources/assets/css/bootstrap-theme.css"
+		media="screen"></link>
+	<link rel="stylesheet" href="resources/assets/css/main.css"></link>
+
+	<style type="text/css">
+.ui-datalist .ui-datalist-content {
+	border: 0 none
+}
+
+.ui-datalist ul {
+	padding: 0px 10px 0 20px;
+	margin: 5px 0;
+}
+
+.value {
+	font-weight: bold;
+}
+
+.ui-autocomplete-itemtip {
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+</style>
+</h:head>
+ 
+<body>
+		
+		
+	
+	<h:form>
+	<h:head>
+		<div class="navbar navbar-inverse navbar-fixed-top headroom">
+			<div class="container">
+				<div class="navbar-header">
+					<!-- Button for smallest screens -->
+					<a class="navbar-brand" href="index.html"><img
+						src="resources/assets/images/logo.png"
+						alt="Progressus HTML5 template"></img></a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav pull-right">
+						<li><a href="index.html">PAGINA PRINCIPAL</a></li>
+						<li><a href=" ">MISION</a></li>
+						<li><a href=" ">VISION</a></li>
+						<li><a href="contact.html">CONTACTO</a></li>
+						<li><a class="btn" href="Loggin.xhtml">INGRESAR/SALIR</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</h:head>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	
+		<p:panelGrid columns="3" cellpadding="4" >
+			<h:outputLabel value="Usuario" />
+			<p:inputText id="usuarioT" value="#{usuarioBean.nombreusuario}" />
+			<h:message for="nombreT" />
+
+			<h:outputLabel value="Contraseña" />
+			<p:password id="contraT" value="#{usuarioBean.password}" />
+			<h:message for="contraT" />
+			<center>
+			<p:commandButton action="#{usuarioBean.loggin()}" value="Ingresar"
+					icon="pi pi-check" />
+			</center>
+		</p:panelGrid>
+	</h:form>
+</body>
+</html>

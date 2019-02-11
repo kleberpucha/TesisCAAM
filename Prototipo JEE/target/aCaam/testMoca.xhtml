@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title></title>
+	<link rel="shortcut icon" href="resources/assets/images/gt_favicon.png"></link>
+
+	<link rel="stylesheet" media="screen"
+		href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700"></link>
+	<link rel="stylesheet" href="resources/assets/css/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="resources/assets/css/font-awesome.min.css"></link>
+
+	<!-- Custom styles for our template -->
+	<link rel="stylesheet" href="resources/assets/css/bootstrap-theme.css"
+		media="screen"></link>
+	<link rel="stylesheet" href="resources/assets/css/main.css"></link>
+
+	<style type="text/css">
+.ui-datalist .ui-datalist-content {
+	border: 0 none
+}
+
+.ui-datalist ul {
+	padding: 0px 10px 0 20px;
+	margin: 5px 0;
+}
+
+.value {
+	font-weight: bold;
+}
+
+.ui-autocomplete-itemtip {
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+</style>
+</h:head>
+
+<body>
+
+	<h:head>
+		<div class="navbar navbar-inverse navbar-fixed-top headroom">
+			<div class="container">
+				<div class="navbar-header">
+					<!-- Button for smallest screens -->
+					<a class="navbar-brand" href="index.html"><img
+						src="resources/assets/images/logo.png"
+						alt="Progressus HTML5 template"></img></a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav pull-right">
+						<li><a href="index.html">PAGINA PRINCIPAL</a></li>
+						<li><a href=" ">MISION</a></li>
+						<li><a href=" ">VISION</a></li>
+						<li><a href="contact.html">CONTACTO</a></li>
+						<li><a class="btn" href="Loggin.xhtml">INGRESAR/SALIR</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</h:head>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+
+	<h:form>
+		<p:dock position="bottom">
+			<p:menuitem value="PRINCIPAL" icon="/resources/demo/images/home.png"
+				url="Pasiente.xhtml" />
+		</p:dock>
+	</h:form>
+	<h:form id="usuarioseccion">
+		<div align="right">
+			<h:outputText value="#{personaBean.usuLoogin}" />
+		</div>
+	</h:form>
+	<h:form>
+
+		<p:messages id="messages" showDetail="true" closable="true">
+			<p:autoUpdate />
+		</p:messages>
+	</h:form>
+	<h:form>
+		<p:growl id="growl" showDetail="true" sticky="true" />
+		<center>
+			<p:panelGrid columns="2">
+				<p:outputLabel value="Cedula: " for="acForce" />
+					<p:autoComplete id="acForce" forceSelection="true"
+						value="#{personaBean.cedula}"
+						completeMethod="#{comentariosBean.completeText()}" />
+				
+
+				<p:outputLabel for="button" value="Fecha" />
+				<p:calendar id="button" value="#{personaBean.newtest.fechaN}"
+					showOn="button" />
+				<p:commandButton action="#{personaBean.listarporcedula()}"
+					value="Verificar" icon="pi pi-check" />
+			</p:panelGrid>
+		</center>
+
+
+
+		<div align="center">
+			<table border="2">
+				<tr>
+					<th width="64" scope="col">&nbsp;</th>
+					<th width="761" scope="col">TEST DE MOCCA</th>
+					<th width="203" align="center" bgcolor="#FFFFFF" scope="col">Resultado</th>
+				</tr>
+				<tr>
+					<th scope="row">Pregunta 1</th>
+					<td><p>
+							<strong>VISUOESPACIAL / EJECUTIVA</strong><br /> Siga el orden
+						</p>
+						<p align="center">
+							<img src="resources/recursostest/imagen1.PNG" width="201"
+								height="193" alt="" />
+						</p></td>
+					<td align="center" bgcolor="#FFFFFF"><p:selectOneMenu
+							id="pregunta1" value="#{personaBean.newtest.pre1}"
+							style="width:125px">
+							<f:selectItem itemLabel="Select One" itemValue="" />
+							<f:selectItem itemLabel="1" itemValue="1" />
+							<f:selectItem itemLabel="2" itemValue="2" />
+							<f:selectItem itemLabel="3" itemValue="3" />
+						</p:selectOneMenu></td>
+				</tr>
+				<tr bgcolor="#D6D6D6">
+					<th bgcolor="#D6D6D6" scope="row">Pregunta 2</th>
+					<td bgcolor="#D6D6D6"><p>
+							<strong>MEMORIA</strong><br /> Identificar los animales
+						</p>
+						<p align="center">
+							<img src="resources/recursostest/identificar 2.PNG" width="601"
+								height="167" />
+						</p>
+						<p>&nbsp;</p></td>
+					<td align="center" bgcolor="#D6D6D6"><p:selectOneMenu
+							id="pregunta2" value="#{personaBean.newtest.pre2}"
+							style="width:125px">
+							<f:selectItem itemLabel="Seleccione" itemValue="" />
+							<f:selectItem itemLabel="1" itemValue="1" />
+							<f:selectItem itemLabel="2" itemValue="2" />
+							<f:selectItem itemLabel="3" itemValue="3" />
+						</p:selectOneMenu></td>
+				</tr>
+				<tr>
+					<th scope="row">Pregunta 3</th>
+					<td>
+						<p>
+							<strong>MEMORIA</strong>
+						</p>
+						<p>Lea la lista de palabras, el paciente debe repetirlas.Haga
+							dos intentos.Recuérdeselas 5 minutos Recuérdeselas 5 minutos más
+							tarde.</p>
+						<p align="center">
+							<img src="resources/recursostest/imagen3.PNG" width="576"
+								height="84" />
+						</p>
+						<p>&nbsp;</p>
+					</td>
+					<td align="center" bgcolor="#FFFFFF"><p:selectOneMenu
+							id="pregunta3" value="#{personaBean.newtest.pre3}"
+							style="width:125px">
+							<f:selectItem itemLabel="Seleccione" itemValue="" />
+							<f:selectItem itemLabel="1" itemValue="1" />
+							<f:selectItem itemLabel="2" itemValue="2" />
+							<f:selectItem itemLabel="3" itemValue="3" />
+						</p:selectOneMenu></td>
+				</tr>
+				<tr bgcolor="#CCCCCC">
+					<th scope="row">Pregunta 4</th>
+					<td><p>
+							<strong>ATENCIÓN</strong>
+						</p>
+						<p>
+							Lea la serie de letras. El paciente debe dar un golpecito con la
+							mano cada vez que se diga la letra A.<br /> No se asignan puntos
+							si <br /> &gt; 2 errores
+						</p>
+						<p align="center">
+							<img src="resources/recursostest/atencion.PNG" width="474"
+								height="28" />
+						</p></td>
+					<td align="center"><p:selectOneMenu id="pregunta4"
+							value="#{personaBean.newtest.pre4}" style="width:125px">
+							<f:selectItem itemLabel="Seleccione" itemValue="" />
+							<f:selectItem itemLabel="1" itemValue="1" />
+							<f:selectItem itemLabel="2" itemValue="2" />
+							<f:selectItem itemLabel="3" itemValue="3" />
+						</p:selectOneMenu></td>
+				</tr>
+				<tr>
+					<th scope="row">Pregunta 5</th>
+					<td><p>
+							<strong>LENGUAJE</strong>
+						</p>
+						<p>Fluidez del lenguaje. Decir el mayor número posible de
+							palabras que comiencen por la letra &quot;P&quot; en 1 min.</p>
+						<p>&nbsp;</p></td>
+					<td align="center" bgcolor="#FFFFFF"><p:selectOneMenu
+							id="pregunta5" value="#{personaBean.newtest.pre5}"
+							style="width:125px">
+							<f:selectItem itemLabel="Seleccione" itemValue="" />
+							<f:selectItem itemLabel="Bueno" itemValue="1" />
+							<f:selectItem itemLabel="Normal" itemValue="2" />
+							<f:selectItem itemLabel="Muy Bueno" itemValue="3" />
+						</p:selectOneMenu></td>
+				</tr>
+				<tr bgcolor="#CCCCCC">
+					<th scope="row">Pregunta 6</th>
+					<td><p>
+							<strong>ABSTRACCIÓN</strong>
+						</p>
+						<p>
+							Similitud entre p. ej. manzana-naranja = fruta<br /> SIN PISTAS<br />
+							tren-bicicleta <br /> reloj-regla
+						</p>
+						<p>&nbsp;</p></td>
+					<td align="center"><p:selectOneMenu id="pregunta6"
+							value="#{personaBean.newtest.pre6}" style="width:125px">
+							<f:selectItem itemLabel="Seleccione" itemValue="" />
+							<f:selectItem itemLabel="1" itemValue="1" />
+							<f:selectItem itemLabel="2" itemValue="2" />
+						</p:selectOneMenu></td>
+				</tr>
+				<tr>
+					<th scope="row">Pregunta 7</th>
+					<td><p>ORIENTACIÓN</p>
+						<p align="center">
+							<img src="resources/recursostest/orientacion.PNG" width="761"
+								height="44" />
+						</p></td>
+					<td align="center" bgcolor="#FFFFFF"><p:selectOneMenu
+							id="pregunta7" value="#{personaBean.newtest.pre7}"
+							style="width:125px">
+							<f:selectItem itemLabel="Seleccione" itemValue="" />
+							<f:selectItem itemLabel="1" itemValue="1" />
+							<f:selectItem itemLabel="2" itemValue="2" />
+							<f:selectItem itemLabel="3" itemValue="3" />
+							<f:selectItem itemLabel="4" itemValue="4" />
+							<f:selectItem itemLabel="5" itemValue="5" />
+						</p:selectOneMenu></td>
+				</tr>
+			</table>
+		</div>
+	</h:form>
+</body>
+</html>

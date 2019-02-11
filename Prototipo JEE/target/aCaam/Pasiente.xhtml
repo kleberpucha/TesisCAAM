@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title></title>
+	<link rel="shortcut icon" href="resources/assets/images/gt_favicon.png"></link>
+
+	<link rel="stylesheet" media="screen"
+		href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700"></link>
+	<link rel="stylesheet" href="resources/assets/css/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="resources/assets/css/font-awesome.min.css"></link>
+
+	<!-- Custom styles for our template -->
+	<link rel="stylesheet" href="resources/assets/css/bootstrap-theme.css"
+		media="screen"></link>
+	<link rel="stylesheet" href="resources/assets/css/main.css"></link>
+
+	<style type="text/css">
+.ui-datalist .ui-datalist-content {
+	border: 0 none
+}
+
+.ui-datalist ul {
+	padding: 0px 10px 0 20px;
+	margin: 5px 0;
+}
+
+.value {
+	font-weight: bold;
+}
+
+.ui-autocomplete-itemtip {
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+</style>
+</h:head>
+<body>
+
+	<h:form>
+	
+	<h:head>
+		<div class="navbar navbar-inverse navbar-fixed-top headroom">
+			<div class="container">
+				<div class="navbar-header">
+					<!-- Button for smallest screens -->
+					<a class="navbar-brand" href="index.html"><img
+						src="resources/assets/images/logo.png"
+						alt="Progressus HTML5 template"></img></a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav pull-right">
+						<li><a href="index.html">PAGINA PRINCIPAL</a></li>
+						<li><a href=" ">MISION</a></li>
+						<li><a href=" ">VISION</a></li>
+						<li><a href="contact.html">CONTACTO</a></li>
+						<li><a class="btn" href="Loggin.xhtml">INGRESAR/SALIR</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</h:head>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+
+	</h:form>
+	<h:form>
+		
+		<p:layout style="min-width:400px;min-height:600px;">
+			<p:layoutUnit position="west" resizable="false" size="325"
+				minSize="325" maxSize="325">
+				<p:panelMenu style="width:300px">
+					<p:submenu label="Objeto de Aprendizaje">
+						<p:menuitem value="Objetos de Apredizajes" url="ObjetodeaprendizajeTodos.xhtml"
+							icon="pi pi-file" />
+						<p:menuitem value="Comentarios" url="Comentario.xhtml"
+							icon="pi pi-file" />
+					</p:submenu>
+					<p:submenu label="Test de Moca">
+						<p:menuitem value="Ingresar" url="testMoca.xhtml"
+							icon="pi pi-home" />
+						<p:menuitem value="Listar" url="ListarResultadoTest.xhtml"
+							icon="pi pi-home" />
+					</p:submenu>
+					<p:submenu label="Usuario">
+						<p:menuitem value="Listar Usuario" url="ListarUsuarios.xhtml"
+							icon="pi pi-home" />
+						<p:menuitem value="Ingresar Usuario" url="IngresoUsuario.xhtml"
+							icon="pi pi-home" />
+					</p:submenu>
+					<p:separator />
+				</p:panelMenu>
+
+			</p:layoutUnit>
+
+			<p:layoutUnit position="center">
+			
+							
+				<h1>
+									
+					Bienvenido al sistema
+					<h:outputLabel value="#{validarVentanaBean.usuLoogin}" />
+				</h1>
+				<p:commandButton value="Salir" action="#{logout.salir()}"/>
+			</p:layoutUnit>
+		</p:layout>
+	</h:form>
+</body>
+</html>

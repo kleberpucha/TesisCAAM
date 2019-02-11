@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<style type="text/css">
+.value {
+	font-weight: bold;
+}
+</style>
+	<style type="text/css">
+.ui-paginator a {
+	margin-right: 5px;
+}
+</style>
+
+</h:head>
+<h:head>
+	<link rel="shortcut icon" href="resources/assets/images/gt_favicon.png"></link>
+
+	<link rel="stylesheet" media="screen"
+		href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700"></link>
+	<link rel="stylesheet" href="resources/assets/css/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="resources/assets/css/font-awesome.min.css"></link>
+
+	<!-- Custom styles for our template -->
+	<link rel="stylesheet" href="resources/assets/css/bootstrap-theme.css"
+		media="screen"></link>
+	<link rel="stylesheet" href="resources/assets/css/main.css"></link>
+
+	<style type="text/css">
+.ui-datalist .ui-datalist-content {
+	border: 0 none
+}
+
+.ui-datalist ul {
+	padding: 0px 10px 0 20px;
+	margin: 5px 0;
+}
+
+.value {
+	font-weight: bold;
+}
+
+.ui-autocomplete-itemtip {
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+</style>
+</h:head>
+<body>
+	<h:form>
+		<p:dock position="bottom">
+			<p:menuitem value="PRINCIPAL" icon="/resources/demo/images/home.png"
+				url="Pasiente.xhtml" />
+		</p:dock>
+	</h:form>
+	<h:head>
+		<div class="navbar navbar-inverse navbar-fixed-top headroom">
+			<div class="container">
+				<div class="navbar-header">
+					<!-- Button for smallest screens -->
+					<a class="navbar-brand" href="index.html"><img
+						src="resources/assets/images/logo.png"
+						alt="Progressus HTML5 template"></img></a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav pull-right">
+						<li><a href="index.html">PAGINA PRINCIPAL</a></li>
+						<li><a href=" ">MISION</a></li>
+						<li><a href=" ">VISION</a></li>
+						<li><a href="contact.html">CONTACTO</a></li>
+						<li><a class="btn" href="Loggin.xhtml">INGRESAR/SALIR</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</h:head>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+
+	<h:form id="usuarioseccion">
+		<div align="right">
+			<h:outputText value="#{personaBean.usuLoogin}" />
+		</div>
+	</h:form>
+	<h:form id="form">
+		<p:carousel value="#{personaBean.tesf}"
+			headerText="Resultados Test Mocca" var="listFin"
+			itemStyle="text-align:center" responsive="true">
+			<p:panelGrid columns="2" style="width:100%;margin:10px 0px"	columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+				<h:outputLabel value="Nombre:" />
+				<h:outputText value="#{listFin.persona.nombre}" />
+				
+				<h:outputLabel value="Cedula:" />
+				<h:outputText value="#{listFin.persona.cedula}" />
+
+				<h:outputLabel value="Fecha:" />
+				<h:outputText value="#{listFin.fechaN}" />
+
+				<h:outputLabel value="VISUOESPACIAL" />
+				<h:outputText value="#{listFin.pre1}" />
+
+				<h:outputLabel value="MEMORIA" />
+				<h:outputText value="#{listFin.pre2}" />
+
+				<h:outputLabel value="MEMORIA" />
+				<h:outputText value="#{listFin.pre3}" />
+
+				<h:outputLabel value="ATENCION" />
+				<h:outputText value="#{listFin.pre4}" />
+
+				<h:outputLabel value="LENGUAJE" />
+				<h:outputText value="#{listFin.pre5}" />
+
+				<h:outputLabel value="ABSTRACCION" />
+				<h:outputText value="#{listFin.pre6}" />
+
+				<h:outputLabel value="ORIENTACION" />
+				<h:outputText value="#{listFin.pre7}" />
+
+			</p:panelGrid>
+		</p:carousel>
+	</h:form>
+	
+	
+	<h:form id="paralosreportes">
+		
+		<p:panel id="toggleable" header="Reportes" toggleable="true"
+			closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel"
+			style="margin-bottom:20px">
+
+			<p:outputLabel value="Cedula: " for="acForce" />
+
+
+			<p:autoComplete id="acForce" forceSelection="true"
+				value="#{personaBean.cedulafiltradoTest}"
+				completeMethod="#{comentariosBean.completeText()}" />
+
+			<p:commandButton value="Listar"	action="#{personaBean.listarporelId()}" update="@form" />
+			<h:commandButton value="Listar dats" action="#{personaBean.listarporelId()}"> </h:commandButton>
+			<br />
+			<br />
+
+			<p:outputLabel value="#{personaBean.nombreTestF}" />
+				<h:panelGrid columns="1" cellpadding="10">
+				<p:dataTable id="tbl" var="usuario" value="#{personaBean.tst}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+					paginator="true" rows="10" style="margin-bottom:20px">
+
+					<f:facet name="{Exporters}">
+						<div style="float: right; padding-top: 5px;">
+							<h:commandLink>
+								<p:graphicImage name="/demo/images/csv.png" width="24" />
+								<p:dataExporter type="csv" target="tbl" fileName="cars" />
+							</h:commandLink>
+						</div>
+					</f:facet>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Fecha" />
+						</f:facet>
+						<h:outputText value="#{usuario.fechaN}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Visual" />
+						</f:facet>
+						<h:outputText value="#{usuario.pre1}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Memoria" />
+						</f:facet>
+						<h:outputText value="#{usuario.pre2}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Memoria" />
+						</f:facet>
+						<h:outputText value="#{usuario.pre3}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Atencion" />
+						</f:facet>
+						<h:outputText value="#{usuario.pre4}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Lenguaje" />
+						</f:facet>
+						<h:outputText value="#{usuario.pre5}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Abstraccion" />
+						</f:facet>
+						<h:outputText value="#{usuario.pre6}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Orientacion" />
+						</f:facet>
+						<h:outputText value="#{usuario.pre7}" />
+					</p:column>
+					
+				</p:dataTable>
+			</h:panelGrid>
+		<h3>Exportar a:</h3>
+    <h:commandLink>
+        <p:graphicImage name="/demo/images/excel.png" />
+        <p:dataExporter type="xls" target="tbl" fileName="cars" pageOnly="true"/>
+    </h:commandLink>
+ 
+    <h:commandLink>
+        <p:graphicImage name="/demo/images/pdf.png" />
+        <p:dataExporter type="pdf" target="tbl" fileName="cars" pageOnly="true" />
+    </h:commandLink>
+ 
+    <h:commandLink>
+        <p:graphicImage name="/demo/images/csv.png" />
+        <p:dataExporter type="csv" target="tbl" fileName="cars" pageOnly="true" />
+    </h:commandLink>
+ 
+    <h:commandLink>
+        <p:graphicImage name="/demo/images/xml.png" />
+        <p:dataExporter type="xml" target="tbl" fileName="cars" pageOnly="true" />
+    </h:commandLink>
+			
+		</p:panel>
+	</h:form>
+
+</body>
+</html>
